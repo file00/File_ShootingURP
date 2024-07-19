@@ -13,7 +13,6 @@ public class BulletMove : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 총알을 위로 계속 이동하게 하고싶다.
@@ -22,4 +21,15 @@ public class BulletMove : MonoBehaviour
 
         transform.position += dir * moveSpeed * Time.deltaTime;
     }
+
+    // If, 충돌이 발생한다면..
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 상대방 Object를 제거한다.
+        Destroy(collision.gameObject);
+
+        // 나를 제거한다.    
+        Destroy(gameObject);
+    }
+
 }
