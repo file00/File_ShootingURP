@@ -23,10 +23,19 @@ public class BulletMove : MonoBehaviour
     }
 
     // If, 충돌이 발생한다면..
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    // 상대방 Object를 제거한다.
+    //    Destroy(collision.gameObject);
+
+    //    // 나를 제거한다.    
+    //    Destroy(gameObject);
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
         // 상대방 Object를 제거한다.
-        Destroy(collision.gameObject);
+        Destroy(other.gameObject);
 
         // 나를 제거한다.    
         Destroy(gameObject);
