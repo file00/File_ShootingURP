@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    // 총알을 위로 계속 이동하게 하고싶다.
+    // 총알을 위로 계속 이동하게 하고 싶다.
     // Direction = Up, Size = Move Speed
     public float moveSpeed = 10;
 
