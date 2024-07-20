@@ -34,9 +34,12 @@ public class BulletMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 상대방 Object를 제거한다.
-        Destroy(other.gameObject);
-
+        // If, 충돌한 대상의 게임 Object의 이름이 "Enemy"라는 문자열을 포함하고 있다면..
+        if (other.gameObject.name.Contains("Enemy"))
+        {        
+            // 상대방 Object를 제거한다.
+            Destroy(other.gameObject);
+        }
         // 나를 제거한다.    
         Destroy(gameObject);
     }
