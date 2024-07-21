@@ -18,7 +18,10 @@ public class BulletMove : MonoBehaviour
     {
         // 총알을 위로 계속 이동하게 하고싶다.
         // Vector3 dir = Vector3.up;
-        Vector3 dir = new Vector3(0, 1, 0);
+
+        // 총알의 이동방향을 나의 위쪽 방향으로 이동하게 설정한다.
+        // Vector3 dir = new Vector3(0, 1, 0);
+        Vector3 dir = transform.up;
 
         transform.position += dir * moveSpeed * Time.deltaTime;
     }
