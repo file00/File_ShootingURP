@@ -8,6 +8,7 @@ public class PlayerFire : MonoBehaviour
     // 1. Bullet의 Prefab을 안다.
     public GameObject bulletPrefab;
     public GameObject firePosition;
+    public AudioClip[] sounds = new AudioClip[2];
 
     AudioSource firesound;
 
@@ -51,6 +52,19 @@ public class PlayerFire : MonoBehaviour
                // firesound.Stop();
                // firesound.Pause();
             }
+        }
+
+        // Keyboard의 숫자 Key 1번을 누르면 격발 Sound가 Sound1 Clip으로 출력되게 하고,
+        // 1. 사용자의 입력(숫자키 1)을 받는다.
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            firesound.clip = sounds[0];
+        }
+
+        // Keyboard의 숫자 Key 2번을 누르면 격발 Sound가 Sound2 Clip으로 출력되게 한다.
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            firesound.clip = sounds[1];
         }
     }
 }
