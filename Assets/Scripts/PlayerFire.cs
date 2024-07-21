@@ -9,9 +9,18 @@ public class PlayerFire : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject firePosition;
 
+    AudioSource firesound;
+
     void Start()
     {
-        
+        // 1. Audio Source Component를 가져온다.(Caching)
+        firesound = gameObject.GetComponent<AudioSource>();
+
+        // Volume 0.1로 변경
+        if (firesound != null)
+        {
+            firesound.volume = 0.1f;
+        }
     }
 
     void Update()
@@ -33,6 +42,15 @@ public class PlayerFire : MonoBehaviour
             // bulletInstance.transform.position = firePosition;
             bulletInstance.transform.position = firePosition.transform.position;
 
+            // Bullet 발사 할때 마다 격발 Sound가 출력되게 하고 싶다.
+
+            // 2. Audio Source에 Sound Clip을 Play 한다.
+            if(firesound != null)
+            {
+                firesound.Play();
+               // firesound.Stop();
+               // firesound.Pause();
+            }
         }
     }
 }
