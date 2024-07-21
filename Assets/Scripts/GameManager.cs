@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -75,6 +77,35 @@ public class GameManager : MonoBehaviour
     // GameOver UI를 활성화 or 비활성화 해주는 Function
     public void ShowGameOverUI(bool activation)
     {
+        // Panel Object를 활성화 한다.
         gameOverUI.SetActive(activation);
+
+        // App의 시간흐름을 0배율로 변경한다.
+        Time.timeScale = 0;
+    }
+
+    // Game Restart Function
+    public void Restart()
+    {
+        // print("재시작 버튼이 클릭되었습니다!!");
+
+        // 현재 Scene을 다시 시작(Load)한다.
+        SceneManager.LoadScene(0);
+
+        // App의 시간흐름을 1배율로 변경한다.
+        Time.timeScale = 1;
+    }
+
+    // App 종료함수를 만들어 준다.
+    public void AppQuit()
+    {
+#if UNITY_EDITOR
+        // Unity Editor의 PlayMode를 종료한다.
+        EditorApplication.ExitPlaymode();
+
+#elif UNITY_STANDALONE
+        // Application을 종료한다.(Unity에서 Play중 일 때는 사용 불가능하다.)
+        Application.Quit();
+#endif
     }
 }
