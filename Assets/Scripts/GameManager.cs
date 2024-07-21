@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // public GameObject scoreObject;
     public Text scoreText;
     public Text bestScoreText;
+    public GameObject gameOverUI;
 
     int currentScore = 0;
     int bestScore = 0;
@@ -31,8 +32,16 @@ public class GameManager : MonoBehaviour
         // ScoreText Component를 Caching 하기
         // scoreText = scoreObject.GetComponent<Text>();
 
-        // ScoreText의 값을 "0"으로 초기화 한다.
+        // CurrentScoreText의 값을 "0"으로 초기화 한다.
         scoreText.text = "0";
+
+        // "BestScore"라는 Key로 저장된 Data가 있다면...
+        if (PlayerPrefs.HasKey("BestScore"))
+        {
+            // BestScoreText에 저장된 Best Score를 읽어와서 표시한다.
+            bestScore = PlayerPrefs.GetInt("BestScore");
+            bestScoreText.text = bestScore.ToString();
+        }
     }
 
     void Update()
@@ -56,5 +65,16 @@ public class GameManager : MonoBehaviour
 
             bestScoreText.text = bestScore.ToString();
         }
+    }
+
+    public int GetBestScore()
+    {
+        return bestScore;
+    }
+
+    // GameOver UI를 활성화 or 비활성화 해주는 Function
+    public void ShowGameOverUI(bool activation)
+    {
+        gameOverUI.SetActive(activation);
     }
 }
