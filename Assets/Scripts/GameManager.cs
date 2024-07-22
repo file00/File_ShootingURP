@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     // 싱글턴 패턴으로 구현(Singletone)
     public static GameManager gm;
     // public GameObject scoreObject;
-    public Text scoreText;
+    public Text scoreText; // Legacy 방식의 Text Component
+    public TMP_Text scoreTextTMP; // Text Mesh Pro 방식의 Text Component
     public Text bestScoreText;
     public GameObject gameOverUI;
 
@@ -35,7 +37,8 @@ public class GameManager : MonoBehaviour
         // scoreText = scoreObject.GetComponent<Text>();
 
         // CurrentScoreText의 값을 "0"으로 초기화 한다.
-        scoreText.text = "0";
+        // scoreText.text = "0";
+        scoreTextTMP.text = "0";
 
         // "BestScore"라는 Key로 저장된 Data가 있다면...
         if (PlayerPrefs.HasKey("BestScore"))
@@ -57,7 +60,8 @@ public class GameManager : MonoBehaviour
         currentScore += point;
         // print(currentScore);
         // 현재 Score(숫자)를 문자열로 변경해서 UI의 ScoreText에다가 값으로 전달한다. 
-        scoreText.text = currentScore.ToString();
+        // scoreText.text = currentScore.ToString();
+        scoreTextTMP.text = currentScore.ToString();
 
         // If, 추가된 현재 점수가 기록중인 최고 점수보다 더 높다면
         if (currentScore > bestScore)
