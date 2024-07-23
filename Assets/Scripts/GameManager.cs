@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         // print("재시작 버튼이 클릭되었습니다!!");
 
         // 현재 Scene을 다시 시작(Load)한다.
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
         // App의 시간흐름을 1배율로 변경한다.
         Time.timeScale = 1;
